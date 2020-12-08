@@ -1,11 +1,13 @@
-FROM haskell:8.8.3
+FROM haskell:8.8.4
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
 WORKDIR /work
 
+COPY ./stack.yaml ./bookPageApp.cabal /work/
 RUN stack build --only-dependencies
 
 COPY . /work/
+RUN ls -R
 RUN stack build && stack install
 
-CMD web-service-exe -p $PORT
+CMD stack exec bookPageApp
