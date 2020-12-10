@@ -4,3 +4,4 @@ services:
     build: ./infra/haskell
     volumes:
       - ./backend:/work
+    tty: true

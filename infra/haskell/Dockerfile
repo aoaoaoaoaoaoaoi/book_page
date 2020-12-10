@@ -9,4 +9,4 @@ RUN stack build --only-dependencies
 COPY . /work/
 RUN stack build && stack install
 
-CMD stack exec bookPageApp
+CMD stack exec bookPageApp-exe
