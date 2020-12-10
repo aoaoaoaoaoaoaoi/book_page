@@ -7,7 +7,6 @@ COPY ./stack.yaml ./bookPageApp.cabal /work/
 RUN stack build --only-dependencies
 
 COPY . /work/
-RUN ls -R
 RUN stack build && stack install
 
 CMD stack exec bookPageApp
