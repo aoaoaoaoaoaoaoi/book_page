@@ -7,3 +7,4 @@ COPY . /work
 
 FROM alpine:3.12.2
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
+WORKDIR /work
