@@ -5,10 +5,5 @@ RUN stack update && stack upgrade
 WORKDIR /work
 COPY . /work
 
-FROM codesimple/elm:0.19 as elmBuilder
-WORKDIR /work
-COPY . /work
-RUN elm init
-RUN elm make elm-src/Main.elm --output=static/main.js
-
 FROM alpine:3.12.2
+SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
