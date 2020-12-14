@@ -6,10 +6,9 @@ WORKDIR /work
 COPY . /work
 
 FROM codesimple/elm:0.19 as elmBuilder
-SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 WORKDIR /work
 COPY . /work
+RUN elm init
 RUN elm make elm-src/Main.elm --output=static/main.js
 
 FROM alpine:3.12.2
-SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
