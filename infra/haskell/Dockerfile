@@ -10,10 +10,7 @@ RUN curl -sSL https://get.haskellstack.org/ | sh
 
 RUN stack --version
 
-RUN stack --system-ghc setup
-
 RUN stack update && stack upgrade
-
 
 WORKDIR /work 
 COPY . /work 
