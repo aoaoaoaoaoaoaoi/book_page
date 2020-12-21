@@ -13,3 +13,11 @@ services:
     volumes:
       - ./backend:/work
     working_dir: /work
+
+  db:
+    build: ./infra/postgres
+    volumes:
+      - db-store:/var/lib/postgresql
+
+volumes:
+  db-store:
