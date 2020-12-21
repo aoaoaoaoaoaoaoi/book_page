@@ -1,6 +1,19 @@
-FROM fpco/stack-build-small:lts-16 as haskellBuilder
-SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
-RUN stack setup
+FROM alpine:3.12.2
+
+RUN apk update
+RUN apk add curl
+RUN apk add ghc
+
+RUN ghc --version
+
+RUN curl -sSL https://get.haskellstack.org/ | sh
+
+RUN stack --version
+
+RUN stack --system-ghc setup
+
 RUN stack update && stack upgrade
-WORKDIR /work
-COPY . /work
+
+
+WORKDIR /work 
+COPY . /work 
