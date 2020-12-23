@@ -9,7 +9,7 @@ services:
   web:
     image: nginx:1.18-alpine
     ports:
-      - 10080:80
+      - "8080:80"
     volumes:
       - ./backend:/work
     working_dir: /work
