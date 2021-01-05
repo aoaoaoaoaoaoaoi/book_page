@@ -21,3 +21,13 @@ type alias Model =
     {
         input : String
     }
+
+--UPDATE
+
+
+--VIEW
+view : Model -> Html Msg
+view model =
+
+
+--Data
