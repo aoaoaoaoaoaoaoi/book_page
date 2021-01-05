@@ -5,7 +5,9 @@ import Html.Events exposing (..)
 import Http
 import Json.Decode as D exposing (Decoder)
 
-main : Program () Model type Msg
+--先にhaskellを書いて、取得するものを決める
+
+main : Program () Model Msg
 main =
     Browser.element
         {
@@ -28,6 +30,9 @@ type alias Model =
 --VIEW
 view : Model -> Html Msg
 view model =
+  div []
+    [
 
+    ]
 
 --Data
