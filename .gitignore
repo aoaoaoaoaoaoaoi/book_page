@@ -1,0 +1,27 @@
+# elm
+client/elm-stuff
+
+# haskell
+backend/myproject/dist
+backend/myproject/dist-*
+backend/myproject/cabal-dev
+backend/myproject/*.o
+backend/myproject/*.hi
+backend/myproject/*.hie
+backend/myproject/*.chi
+backend/myproject/*.chs.h
+backend/myproject/*.dyn_o
+backend/myproject/*.dyn_hi
+backend/myproject/.hpc
+backend/myproject/.hsenv
+backend/myproject/.cabal-sandbox/
+backend/myproject/cabal.sandbox.config
+backend/myproject/*.prof
+backend/myproject/*.aux
+backend/myproject/*.hp
+backend/myproject/*.eventlog
+backend/myproject/.stack-work/
+backend/myproject/cabal.project.local
+backend/myproject/cabal.project.local~
+backend/myproject/.HTF/
+backend/myproject/.ghc.environment.*
