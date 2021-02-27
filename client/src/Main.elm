@@ -27,14 +27,22 @@ main =
 
 
 type alias Model =
-    { input : String
+    { state : State
     }
+
+
+type State
+    = Init
+    | Waiting
+    | Loaded Test
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model ""
-    , Cmd.none
+    ( Model Init
+    , Http.get
+        { url = ""
+        }
     )
 
 
@@ -43,13 +51,13 @@ init _ =
 
 
 type Msg
-    = Init
+    = GetTest
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Init ->
+        GetTest ->
             ( model, Cmd.none )
 
 
@@ -65,3 +73,8 @@ view model =
 
 
 --Data
+
+
+type alias Test =
+    { str : String
+    }
