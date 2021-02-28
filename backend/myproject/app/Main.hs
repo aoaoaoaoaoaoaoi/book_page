@@ -22,4 +22,4 @@ server = pure [Test "testです"]
 
 main :: IO ()
 main = do
-  serve api server
+  Warp.run 18080 (serve api server)
