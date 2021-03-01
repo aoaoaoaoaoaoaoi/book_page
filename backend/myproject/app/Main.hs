@@ -6,6 +6,7 @@
 import Data.Aeson
 import GHC.Generics
 import qualified Network.Wai.Handler.Warp as Warp
+import System.Environment (getArgs)
 import Servant
 
 type API = "test" :> "all" :> Get '[JSON] [Test]
@@ -22,4 +23,5 @@ server = pure [Test "testです"]
 
 main :: IO ()
 main = do
+  staticPath <- head <$> getArgs
   Warp.run 18080 (serve api server)
