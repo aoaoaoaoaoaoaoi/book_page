@@ -23,5 +23,4 @@ server = pure [Test "testです"]
 
 main :: IO ()
 main = do
-  staticPath <- head <$> getArgs
   Warp.run 18080 (serve api server)
