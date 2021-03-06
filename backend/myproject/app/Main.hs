@@ -26,5 +26,5 @@ server top = return top
 
 main :: IO ()
 main = do
-  top <- BS.readFile "/client/index.html"
+  top <- BS.readFile "../../client/index.html"
   run 8080 $ serve api (server top)
