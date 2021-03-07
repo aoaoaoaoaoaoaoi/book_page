@@ -7,6 +7,7 @@ import Servant
 import Network.Wai.Handler.Warp
 import Network.HTTP.Media ((//), (/:))
 import qualified Data.ByteString.Lazy as BS
+import Control.Monad.IO.Class (liftIO)
 
 data HTML
 
@@ -16,13 +17,17 @@ instance Accept HTML where
 instance MimeRender HTML BS.ByteString where
     mimeRender _ bs = bs
 
-type API = Get '[HTML] BS.ByteString
+type API
+    =    Get '[HTML] BS.ByteString
+    :<|> "static" :> Raw
 
 api :: Proxy API
 api = Proxy
 
 server :: BS.ByteString -> Server API
-server top = return top
+server top
+    =    (liftIO $ return top)
+    :<|> serveDirectoryWebApp "../../client"
 
 main :: IO ()
 main = do

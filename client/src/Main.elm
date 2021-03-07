@@ -7,11 +7,7 @@ import Html.Events exposing (..)
 import Http
 import Json.Decode as D exposing (Decoder)
 
-main = div[][text "hello world"]
 
---先にhaskellを書いて、取得するものを決める
-
-{--! 
 main : Program () Model Msg
 main =
     Browser.element
@@ -27,7 +23,8 @@ main =
 
 
 type alias Model =
-    { state : State
+    { state : State,
+      currentId : Int
     }
 
 
@@ -39,10 +36,8 @@ type State
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model Init
-    , Http.get
-        { url = ""
-        }
+    ( Model Init 0
+    , Cmd.none
     )
 
 
@@ -51,13 +46,13 @@ init _ =
 
 
 type Msg
-    = GetTest
+    = ChangeId
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        GetTest ->
+        ChangeId ->
             ( model, Cmd.none )
 
 
@@ -79,4 +74,4 @@ type alias Test =
     { str : String
     }
 
-    --}
+
