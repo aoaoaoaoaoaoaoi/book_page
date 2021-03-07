@@ -7,11 +7,11 @@ import Html.Events exposing (..)
 import Http
 import Json.Decode as D exposing (Decoder)
 
-
+main = div[][text "hello world"]
 
 --先にhaskellを書いて、取得するものを決める
 
-
+{--! 
 main : Program () Model Msg
 main =
     Browser.element
@@ -68,7 +68,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        []
+        [text "Hello world!"]
 
 
 
@@ -78,3 +78,5 @@ view model =
 type alias Test =
     { str : String
     }
+
+    --}

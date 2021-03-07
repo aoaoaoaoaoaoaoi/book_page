@@ -1,27 +1,30 @@
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE DeriveAnyClass #-}
-{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE DataKinds             #-}
+{-# LANGUAGE TypeOperators         #-}
+{-# LANGUAGE OverloadedStrings     #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 
-import Data.Aeson
-import GHC.Generics
-import qualified Network.Wai.Handler.Warp as Warp
-import System.Environment (getArgs)
 import Servant
+import Network.Wai.Handler.Warp
+import Network.HTTP.Media ((//), (/:))
+import qualified Data.ByteString.Lazy as BS
 
-type API = "test" :> "all" :> Get '[JSON] [Test]
+data HTML
+
+instance Accept HTML where
+    contentType _ = "text" // "html" /: ("charset", "utf-8")
+
+instance MimeRender HTML BS.ByteString where
+    mimeRender _ bs = bs
+
+type API = Get '[HTML] BS.ByteString
 
 api :: Proxy API
 api = Proxy
 
-data Test = Test
-  { test  :: String
-  } deriving (Generic, ToJSON)
-
-server :: Server API
-server = pure [Test "testです"]
+server :: BS.ByteString -> Server API
+server top = return top
 
 main :: IO ()
 main = do
-  staticPath <- head <$> getArgs
-  Warp.run 18080 (serve api server)
+  top <- BS.readFile "../../client/index.html"
+  run 8080 $ serve api (server top)
