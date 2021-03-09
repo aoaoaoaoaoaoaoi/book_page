@@ -1,0 +1,9 @@
+version: "3"
+services:
+  db:
+    build: ./infra/postgres
+    volumes:
+      - db-store:/var/lib/postgresql
+
+volumes:
+  db-store:
