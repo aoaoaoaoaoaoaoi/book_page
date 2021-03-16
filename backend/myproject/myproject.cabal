@@ -26,7 +26,9 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      App
+    , DataStore
+    , DataStore.Internal
   other-modules:
       Paths_myproject
   hs-source-dirs:
@@ -34,6 +36,17 @@ library
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
+    , text
+    , yaml
+    , lens
+    , monad-logger
+    , transformers
+    , resourcet
+    , persistent
+    , persistent-template
+    , persistent-postgresql
+    , servant
     , servant-server
     , wai
     , warp
