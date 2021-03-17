@@ -55,3 +55,6 @@ tests:
     - hspec-wai
     - hspec-wai-json
     - aeson
+    - persistent
+    - persistent-template
+    - persistent-postgresql
