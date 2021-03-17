@@ -50,6 +50,7 @@ library
     , servant-server
     , wai
     , warp
+    -- , postgresql-libpq >=0.9.4.3 && <0.10
   default-language: Haskell2010
 
 executable myproject-exe
